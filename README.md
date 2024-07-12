@@ -10,6 +10,13 @@ A simple way of authenticating your APIs with API keys using Laravel. This packa
 - philsturgeon's [Fractal](https://github.com/thephpleague/fractal)
 - maximebeaudoin's [api-response](https://github.com/ellipsesynergie/api-response)
 
+## Loop's Changes
+As of this repo being tagged v`5.0` we use a [terminable middleware](https://laravel.com/docs/11.x/middleware#terminable-middleware) to perform the database update that updates the API Key's `last_ip_address` and `last_used_at` date.
+
+This terminable middleware pushes this DB write to after the HTTP response has already been sent to the client and allows us to be more efficient.
+
+```Please be advised that terminable middlewares have a dependency on FastCGI and this is acceptable because Loop uses this today.```
+
 ## Laravel 5.3, 5.4 and 5.5 is finally supported!
 
 **Laravel 5.3.x onwards: `~4.*`
