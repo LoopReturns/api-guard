@@ -52,6 +52,9 @@ class AuthenticateApiKey
      */
     public function terminate(Request $request, Response $response): void
     {
+        if (!isset($request->apiKey)) {
+            return;
+        }
         // Update this api key's last_used_at and last_ip_address
         $lastUsedAt = Carbon::now();
         $request->apiKey->update([
